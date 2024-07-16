@@ -1,0 +1,133 @@
+1) interface Animal {
+    void makeSound();
+}
+
+class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Woof Woof");
+    }
+}
+
+class Cat implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Meow Meow");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+        
+        myDog.makeSound(); // Outputs: Woof Woof
+        myCat.makeSound(); // Outputs: Meow Meow
+    }
+}
+
+
+2) interface Shape {
+    double area();
+    double perimeter();
+}
+
+class Rectangle implements Shape {
+    private double width;
+    private double height;
+    
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    @Override
+    public double area() {
+        return width * height;
+    }
+    
+    @Override
+    public double perimeter() {
+        return 2 * (width + height);
+    }
+}
+
+class Circle implements Shape {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+    
+    @Override
+    public double perimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape myRectangle = new Rectangle(5, 7);
+        Shape myCircle = new Circle(3);
+        
+        System.out.println("Rectangle area: " + myRectangle.area());
+        System.out.println("Rectangle perimeter: " + myRectangle.perimeter());
+        System.out.println("Circle area: " + myCircle.area());
+        System.out.println("Circle perimeter: " + myCircle.perimeter());
+    }
+}
+
+
+3) interface Vehicle {
+    void start();
+    void stop();
+
+    default void honk() {
+        System.out.println("Beep Beep!");
+    }
+}
+
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car is starting.");
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Car is stopping.");
+    }
+}
+
+class Bike implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Bike is starting.");
+    }
+    
+    @Override
+    public void stop() {
+        System.out.println("Bike is stopping.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        Vehicle myBike = new Bike();
+        
+        myCar.start();
+        myCar.honk();
+        myCar.stop();
+        
+        myBike.start();
+        myBike.honk(); // 
+        myBike.stop();
+    }
+}
+      
